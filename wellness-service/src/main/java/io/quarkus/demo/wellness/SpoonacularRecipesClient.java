@@ -7,6 +7,7 @@ import org.jboss.resteasy.reactive.RestQuery;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 @Path("recipes")
 @RegisterRestClient(configKey="spoonacular-recipe-api")
@@ -16,9 +17,11 @@ public interface SpoonacularRecipesClient {
 
     @GET
     @Path("random")
+    @Operation(hidden = true) // hide operation from OpenAPI
     RandomRecipesResponse random(@RestQuery("tags") String tag, @RestQuery int number);
 
     @GET
     @Path("{id}/information")
+    @Operation(hidden = true) // hide operation from OpenAPI
     Recipe information(@RestPath long id);
 }
