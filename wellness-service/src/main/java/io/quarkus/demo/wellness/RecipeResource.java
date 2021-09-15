@@ -45,7 +45,7 @@ public class RecipeResource {
         Recipe recipe = spoonacularRecipesClient.information(id);
         List<Exercise> offsettingWorkout = getOffsettingWorkout(recipe);
         Order order = new Order(email, recipe, offsettingWorkout);
-        orderEmitter.send(order);
+        orderEmitter.send(order).toCompletableFuture().join();
         return order;
     }
 
