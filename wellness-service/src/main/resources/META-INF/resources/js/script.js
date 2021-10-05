@@ -118,7 +118,7 @@ function retrieveFood(tag) {
             meals.empty();
             c.forEach(recipe => {
                 let outerDiv = $("<div class='form-check ps-0 q-box'>")
-                let innerDiv = $("<div class="box_form">");
+                let innerDiv = $("<div class='box_form'>");
                 let input = $("<input>").addClass("form-check-input form-input").attr("id", recipe.id)
                     .attr("name", recipe.id).attr("type", "checkbox").attr("value", recipe.id);
                 let label = $("<label>").addClass("form-check-label form-label").attr("for", recipe.id);
