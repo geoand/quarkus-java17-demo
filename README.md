@@ -17,7 +17,5 @@ Mail service => Reads Orders from Kafka and sends email
 
 ## TODOs
 
-* Add Kafka scripts
 * Add Kubernetes deployment support
-* Do end-to-end testing
 * Add more Java language features?
