@@ -19,7 +19,11 @@ public class MailService {
     @Incoming("orders")
     @Blocking
     public void process(Order order) {
-        mailer.send(Mail.withText(order.email(), "Your recipe", "Here is your new recipe!"));
+        mailer.send(Mail.withText(
+                order.email(),
+                "Your recipe: " + order.recipe().title(),
+                order.offsettingWorkout().isEmpty() ? "Congratulations on picking a very health meal!" : "We have included a complementary workout plan for you to offset the calories obtained by your meal."
+        ));
     }
 
 
