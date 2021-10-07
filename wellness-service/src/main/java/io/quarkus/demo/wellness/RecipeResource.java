@@ -34,12 +34,6 @@ public class RecipeResource {
     }
 
     @Path("{id}")
-    @GET
-    public Recipe byId(long id) {
-        return spoonacularRecipesClient.information(id);
-    }
-
-    @Path("{id}")
     @POST
     public Order order(@RestPath long id, @RestQuery @DefaultValue("test@quarkus.io") String email) {
         Recipe recipe = spoonacularRecipesClient.information(id);

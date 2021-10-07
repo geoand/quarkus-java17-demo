@@ -38,14 +38,6 @@ public class RecipeResourceTest {
     }
 
     @Test
-    public void testById() {
-        when().get("/recipe/479101")
-                .then()
-                .statusCode(200)
-                .body("title", equalTo("On the Job: Pan Roasted Cauliflower From Food52"));
-    }
-
-    @Test
     public void testOrder() {
         Order order = when().post("/recipe/479101")
                 .then()
