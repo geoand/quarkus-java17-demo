@@ -11,7 +11,7 @@ import java.util.random.RandomGeneratorFactory;
 @Path("exercise")
 public class ExerciseResource {
 
-    public static final RandomGenerator RANDOM_GENERATOR = RandomGeneratorFactory.getDefault().create();
+    public static final RandomGenerator RANDOM_GENERATOR = RandomGenerator.getDefault();
 
     @GET
     @Path("workout/random")
