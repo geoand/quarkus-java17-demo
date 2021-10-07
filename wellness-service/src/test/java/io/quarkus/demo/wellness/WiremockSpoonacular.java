@@ -1,6 +1,7 @@
 package io.quarkus.demo.wellness;
 
 import com.github.tomakehurst.wiremock.WireMockServer;
+import com.github.tomakehurst.wiremock.client.WireMock;
 import com.github.tomakehurst.wiremock.matching.AnythingPattern;
 import io.quarkus.test.common.QuarkusTestResourceLifecycleManager;
 
@@ -12,6 +13,8 @@ import static com.github.tomakehurst.wiremock.client.WireMock.get;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlPathEqualTo;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.options;
+import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 
 public class WiremockSpoonacular implements QuarkusTestResourceLifecycleManager {
 
@@ -23,9 +26,10 @@ public class WiremockSpoonacular implements QuarkusTestResourceLifecycleManager 
 
     @Override
     public Map<String, String> start() {
-        wireMockServer = new WireMockServer();
+        wireMockServer = new WireMockServer(options().dynamicPort());
         wireMockServer.start();
 
+        WireMock.configureFor(wireMockServer.port());
         stubRandomRecipe();
         stubRecipeInformation();
         stubRandomWorkout();
